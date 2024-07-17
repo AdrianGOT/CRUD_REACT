@@ -1,8 +1,10 @@
 
 // Components
+import { Toaster } from 'sonner';
 import { InputForm } from './components/InputForm';
 import { UserTable } from './components/UserTable';
 import { useAppSelector } from './hooks/store'; 
+import { UserProvider } from './context/userToEdit';
 
 function App() {
   // const [users, setUsers] = useState<ListOfUser>(usersMock)
@@ -12,10 +14,17 @@ function App() {
   return (
     <main style={{
       display:'flex',
-      justifyContent:'center'
+      justifyContent:'center',
+      marginTop: '10px'
     }}>
-      <UserTable users={users}/>
-      <InputForm/>
+      <UserProvider >
+        <InputForm/>
+        <UserTable users={users}/>
+        <Toaster 
+          position="top-center" 
+          expand={true}
+          richColors/>
+      </UserProvider>
     </main>
   )
 }

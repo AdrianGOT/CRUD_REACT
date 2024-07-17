@@ -13,6 +13,7 @@ import { ListOfUserWithId } from '../interfaces/users';
 import { DeleteIcon } from './icons/DeleteIcon';
 import { EditIcon } from './icons/EditIcon';
 import { useUserActions } from '../hooks/useUserActions';
+import { useEditInput } from '../hooks/useEditInput';
 
 
 interface Props {
@@ -21,12 +22,12 @@ interface Props {
 
 
 export const UserTable: React.FC<Props> = ({ users }) => {
-  const { removeUser, editUser } = useUserActions();
+  const { removeUser } = useUserActions();
+  const { setUserToEdit } = useEditInput();
 
   return (
         <Card style={{
           maxWidth: '90%',
-          marginTop: '10px'
         }}>
           <h3 >Users 
             <Badge style={{marginLeft: '8px'}}>{users.length}</Badge> 
@@ -67,7 +68,7 @@ export const UserTable: React.FC<Props> = ({ users }) => {
                     gap: '8px',
                   }}>
                    
-                    <button onClick={()=> editUser(id)}>
+                    <button onClick={()=> setUserToEdit({id, name, email, github})}>
                       <EditIcon/>
                     </button>
                    
