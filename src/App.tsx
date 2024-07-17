@@ -1,5 +1,6 @@
 
 // Components
+import { InputForm } from './components/InputForm';
 import { UserTable } from './components/UserTable';
 import { useAppSelector } from './hooks/store'; 
 
@@ -14,6 +15,7 @@ function App() {
       justifyContent:'center'
     }}>
       <UserTable users={users}/>
+      <InputForm/>
     </main>
   )
 }

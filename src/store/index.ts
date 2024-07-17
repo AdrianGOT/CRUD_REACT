@@ -3,12 +3,8 @@ import  userReducer from './users/slice';
 
 
 const persistanceMiddleware = (store) => (next)=> (action)=> {
-    console.log(store.getState());
-    console.log(action);
-    
     next(action)
-
-    console.log(store.getState());
+    localStorage.setItem('__reduce__state__', JSON.stringify(store.getState()))
 }
 
 export const store = configureStore({
